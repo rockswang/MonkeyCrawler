@@ -5,8 +5,15 @@ A TamperMonkey (or other compatible monkeys) based demo crawler script.
 ## 简介
 爬取懂车帝的热门车型参数。  
 
-## 使用方法
+## 安装
 在GreasyFork上安装即可。
+
+## 使用方法
+1. 浏览器进入懂车帝选车页面；
+2. 选择当前城市、价格区间、能源类型后刷新页面；
+3. 点击车系列表上方的“开始爬取”按钮；
+4. 此时就会根据你的选择自动开始逐页爬取选定范围所有车系所有车型的详细参数，爬取按钮上会显示爬取进度；
+5. 爬取完成后，会自动启动文件下载，下载文件名为“懂车帝热门车型.csv”，下载后可以用Excel打开进行进一步筛选分析；
 
 ## 技术说明
 本脚本主要尝试一种基于油猴脚本管理器的爬虫编写方法，脚本中采用了较为现代的编程技术，包括：
@@ -18,4 +25,5 @@ A TamperMonkey (or other compatible monkeys) based demo crawler script.
 * 前端页面为WebPack动态构建，元素类名不固定，使用`div[class^=xxx]`方式进行前缀匹配；
 * 大量使用 async/await 语法实现异步请求；
 * 使用 for await ... of 语法实现异步循环；
+* 基于 CSV 的规范，生成可在Excel中直接打开的 csv 数据文件；
 * 使用URL Blob 在浏览器端动态构建文件下载，不受 DataURL 长度限制；
