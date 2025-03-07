@@ -86,7 +86,8 @@
         csv = csv.map(e => e.join(',')).join('\n') // 二维数组转成csv格式文本
         var elem = document.createElement('a')
         //elem.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv)
-        var blob = new Blob([csv]) // 必须使用Blob方式，否则收到URL长度限制
+        csv = '\uFEFF' + csv
+        var blob = new Blob([csv], { type: 'text/csv;charset=utf-8' }) // 必须使用Blob方式，否则收到URL长度限制
         elem.href = URL.createObjectURL(blob)
         elem.target = '_blank'
         elem.download = '懂车帝热门车型.csv'
